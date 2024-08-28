@@ -1,13 +1,14 @@
 'use client'
 
+import Image from 'next/image'
 import React from 'react'
 
 const Card = ({
     front,
-    back,
+    matched
 }: {
     front: string
-    back: string
+    matched: boolean
 }) => {
 
     const [flipped, setFlipped] = React.useState(false)
@@ -17,9 +18,11 @@ const Card = ({
     }
 
     return (
-        <div className={`p-5 grid place-items-center bg-gray-300 m-1 card ${flipped ? 'flipped' : ''}`}>
-            <div className="front">{front}</div>
-            <div className="back" onClick={handleCardFlip}>{back}</div>
+        <div className={`card ${flipped || matched ? 'flipped' : ''}`}>
+            <div className="front w-full h-full p-2 grid place-items-center">
+                <Image src={front} alt="card" width={60} height={60} objectFit='cover'  />
+            </div>
+            <div className="back bg-gray-300 w-full h-full p-2" onClick={handleCardFlip}></div>
         </div>
     )
 }
