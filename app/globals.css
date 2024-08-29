@@ -10,10 +10,24 @@
 
 /* * CUSTOM CSS * */
 
+body {
+  background-color: #000;
+}
+
+.game-wrapper {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
 .card {
   position: relative;
   perspective: 1000px;
-  min-height: 10rem;
+  min-height: 5rem;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  transition: .4s;
 }
 
 .card .front {
@@ -21,7 +35,7 @@
   transition: all ease-in 0.2s;
   position: absolute;
   border: 2px solid #000;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .flipped .front {
@@ -37,10 +51,27 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .flipped .back {
   transform: rotateX(90deg);
   transition-delay: 0s;
+}
+
+
+@media screen and (min-width: 576px) {
+  .game-wrapper {
+    max-width: 80%;
+  }
+
+  .card {
+    min-height: 10rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .game-wrapper {
+    max-width: 60%;
+  }
 }
