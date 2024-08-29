@@ -1,5 +1,5 @@
 # Image Flip Game
-This is a 3x3 image flip game built using Next.js. The objective of the game is to flip all the images to their correct positions.
+This is a 4x4 image flip game built using Next.js. The objective of the game is to flip all the images to their correct positions.
 
 ## Technologies Used
 
