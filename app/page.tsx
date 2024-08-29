@@ -77,7 +77,7 @@ const INITAL_STATE: StateProps = {
   choiceOne: null,
   choiceTwo: null,
   disabled: false,
-  showConfetti: false,
+  showConfetti: true,
 };
 
 const reducer = (state: typeof INITAL_STATE, action: ActionProps) => {
