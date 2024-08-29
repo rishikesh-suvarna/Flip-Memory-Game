@@ -1,6 +1,7 @@
 'use client'
 
 import Card from '@/components/Card'
+import SuccessModal from '@/components/SuccessModal';
 import { ShootingStars } from '@/components/ui/shooting-stars';
 import { StarsBackground } from '@/components/ui/stars-background';
 import React from 'react'
@@ -104,7 +105,6 @@ const Home = () => {
   const [state, dispatch] = React.useReducer(reducer, INITAL_STATE);
 
   const shuffleCards = () => {
-    console.log(`Shuffling Cards`);
     const shuffledCards = [...CARDS, ...CARDS]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
@@ -131,7 +131,6 @@ const Home = () => {
   };
 
   const handleChoice = (card: any) => {
-    console.log(card)
     if (!state.choiceOne) {
       setChoiceOne(card);
     } else {
@@ -176,16 +175,17 @@ const Home = () => {
 
   React.useEffect(() => {
     shuffleCards();
+    console.log(`Nothing here... Don't get caught cheating!`)
   }, []);
 
   return (
-    <main className='bg-neutral-900 text-white'>
+    <main className='bg-black text-white'>
       {state.showConfetti && <Confetti />}
       <section className='py-10 z-10 relative'>
         <div className="px-2 sm:px-8 lg:px-0 w-full lg:w-1/2 mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h1 className='text-5xl font-light text-center'>Flip Game</h1>
-            <p className='text-center font-mono text-normal'>Turns: {state.turns}</p>
+          <div className="flex items-end justify-between mb-8">
+            <h1 className='text-6xl text-center'>Flip Game</h1>
+            <p className='text-center text-3xl'>Turns: {state.turns}</p>
           </div>
           <div className={`grid grid-cols-4 gap-3 ${state.disabled ? 'pointer-events-none' : ''}`}>
             {
@@ -205,13 +205,12 @@ const Home = () => {
       </section>
       {
         state.showConfetti && (
-          <div className="z-20 modal fixed w-full h-full backdrop-blur-sm top-0 left-0 flex items-center justify-center transition-all" role='dialog'>
-            <div className="modal-content text-white bg-slate-950 p-4 w-1/2 rounded-md">
-              <h2 className='text-4xl font-light text-center'>Congratulations!</h2>
-              <p className='text-center mt-2'>You have completed the game in {state.turns} turns</p>
-              <button onClick={reset} className='mt-8 p-2 w-full bg-slate-800 text-white'>Play Again</button>
-            </div>
-          </div>
+          <SuccessModal
+            title='Congratulations!'
+            message={`You have completed the game in ${state.turns} turns`}
+            onClickHandler={reset}
+            buttonLabel='Play Again'
+          />
         )
       }
       <ShootingStars />
