@@ -10,10 +10,32 @@
 
 /* * CUSTOM CSS * */
 
+.game-wrapper {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 576px) {
+  .game-wrapper {
+    max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .game-wrapper {
+    max-width: 60%;
+  }
+}
+
 .card {
   position: relative;
   perspective: 1000px;
   min-height: 10rem;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  transition: .4s;
 }
 
 .card .front {

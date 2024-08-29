@@ -26,7 +26,7 @@ const Card = ({
 
     return (
         <div className={`card ${flipped ? 'flipped' : ''}`}>
-            <div className="front w-full h-full p-2 grid place-items-center">
+            <div className="front w-full h-full p-2 grid place-items-center bg-zinc-900">
                 <Image src={front} alt="card" width={60} height={60} style={{ objectFit: 'cover' }} />
             </div>
             <div className="back bg-gray-300 w-full h-full p-2" onClick={handleCardFlip}></div>
